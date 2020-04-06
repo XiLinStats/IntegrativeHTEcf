@@ -72,6 +72,7 @@ library(mgcv)
 #> This is mgcv 1.8-26. For overview type 'help("mgcv-package")'.
 library(MASS)
 library(rootSolve)
+#> Warning: package 'rootSolve' was built under R version 3.5.3
 set.seed(1)
 n=500
 m=1000
@@ -112,7 +113,7 @@ IntegrativeHTEcf::IntHTEcf( A, X, X.hte, X.cf, Y, S, nboots=50)
 #> 
 #> $est.rct
 #>       psi0       psi1       psi2 
-#>  1.0153667 -0.1781974  0.7627507 
+#>  1.0153667 -0.1781974  0.7627508 
 #> 
 #> $att.rct
 #> [1] 1.276543
@@ -133,10 +134,10 @@ IntegrativeHTEcf::IntHTEcf( A, X, X.hte, X.cf, Y, S, nboots=50)
 #> 
 #> $ve.rct
 #>       psi0       psi1       psi2 
-#> 0.01196633 0.01370939 0.05931312 
+#> 0.01196633 0.01370939 0.05931311 
 #> 
 #> $ve.att.rct
-#> [1] 0.003533184
+#> [1] 0.003533183
 #> 
 #> $ve.int
 #>         psi0         psi1         psi2         phi0         phi1 

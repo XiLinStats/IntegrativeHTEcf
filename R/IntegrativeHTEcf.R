@@ -237,23 +237,22 @@ allestimators<-function(X.hte, X.cf, A, X, Y, S){
   est.pre1
 
   ## nuisance function estimation
-  newd <- data.frame(thisx=X )
   psihat <- est.pre1
   tau <- cbind(1,X.hte)%*%psihat
   H<- Y-tau*A
   thisy <- H[loc.rct]
   thisx <- X[loc.rct,]
   jj <- mgcv::gam(thisy~s(thisx))
-  EHsx1 <-mgcv::predict.gam(jj,newd)
+  EHsx1 <-jj$fitted.values
   v1 <- var(jj$residuals)
   thisy <- H[loc.rwe]
   thisx <- X[loc.rwe,]
   jj <- mgcv::gam(thisy~s(thisx))
-  EHsx2 <-mgcv::predict.gam(jj,newd)
+  EHsx2 <-jj$fitted.values
   v2 <- var(jj$residuals)
-  EHsx <- c(EHsx1)
-  EHsx[loc.rct]<-EHsx1[loc.rct]
-  EHsx[loc.rwe]<-EHsx2[loc.rwe]
+  EHsx <- c(EHsx1,EHsx2)
+  EHsx[loc.rct]<-EHsx1
+  EHsx[loc.rwe]<-EHsx2
   vh <- c(rep(v1,n),rep(v2,m))
   vh[loc.rct]<-v1
   vh[loc.rwe]<-v2
@@ -283,17 +282,15 @@ allestimators<-function(X.hte, X.cf, A, X, Y, S){
   lambda <- cbind(1,X.cf)%*%phihat
   H <- Y-A*tau-(1-S)*lambda*(A-eX)
 
-  newd <- data.frame(thisx=X[loc.rct,] )
   thisy <- H[loc.rct]
   thisx <- X[loc.rct,]
   jj <- mgcv::gam(thisy~s(thisx))
-  EHsx1 <-mgcv::predict.gam(jj,newd)
+  EHsx1 <-jj$fitted.values
   v1 <- var(jj$residuals)
-  newd <- data.frame(thisx=X[loc.rwe,] )
   thisy <- H[loc.rwe]
   thisx <- X[loc.rwe,]
   jj <- mgcv::gam(thisy~s(thisx))
-  EHsx2 <-mgcv::predict.gam(jj,newd)
+  EHsx2 <-jj$fitted.values
   v2 <- var(jj$residuals)
   EHsx <- c(EHsx1,EHsx2)
   EHsx[loc.rct]<-EHsx1
