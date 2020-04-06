@@ -3,7 +3,7 @@
 
 # IntegrativeHTEcf
 
-The goal of *IntegrativeHETcf* is to implement integrative analyses for
+The goal of *IntegrativeHTEcf* is to implement integrative analyses for
 the heterogenous treatment effect and confounding functions combining a
 randomized trial and a confounded real-world evidence study with
 unmeasured confounders.
