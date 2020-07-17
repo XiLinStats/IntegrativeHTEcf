@@ -307,7 +307,7 @@ allestimators<-function(X.hte, X.cf, A, X, Y, S){
   est.int
   psihat <- est.int[1:p1]
   tau <- cbind(1,X.hte)%*%psihat
-  att.int<-sum(S*tau)/sum(S)
+  att.int<-sum((1-S)*tau)/sum(1-S)
 
   return(list(est.meta=est.meta,
               att.meta=att.meta,
