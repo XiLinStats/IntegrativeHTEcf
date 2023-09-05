@@ -335,7 +335,7 @@ pre.ee1<-function(par,X.hte,A,X,S,Y){
   X.hte<-as.matrix(X.hte)
   A1 <- A[loc.rct]
   X1 <- X[loc.rct,]
-  X1.hte <- X.hte[loc.rct,]
+  X1.hte <- as.matrix(X.hte[loc.rct,])
   Y1 <- Y[loc.rct]
   psi <- par
   tau <- cbind(1,X1.hte)%*%psi
@@ -363,7 +363,7 @@ opt.eerct<-function(par,X.hte,A,X,S,Y,H,EHsx){
   X.hte<-as.matrix(X.hte)
   A1 <- A[loc.rct]
   X1 <- X[loc.rct,]
-  X1.hte <- X.hte[loc.rct,]
+  X1.hte <- as.matrix(X.hte[loc.rct,])
   Y1 <- Y[loc.rct]
   EHsx1 <- EHsx[loc.rct]
   psi <- par
